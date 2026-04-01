@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 
 BASE_URL = "https://chris-sta.github.io/my_failed_code/" 
-EXCLUDE = ['404.html', 'hiventory.html'] 
+EXCLUDE = ['404.html', 'hinventory.html'] 
 
 def generate_sitemap():
     pages = []
