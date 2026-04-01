@@ -25,3 +25,5 @@ subprocess.run(["python", "inventory.py"])
 subprocess.run(["python", "hinventory.py"])
 
 subprocess.run(["python", "sitemap.py"])
+
+subprocess.run(["python", "canonical.py"])
