@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /creations/
+Disallow: /resources/
+Disallow: /styles/
+Allow: /index.html

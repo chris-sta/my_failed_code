@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Inventory</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #050505;
+    color: #dcdcdc;
+    font-family: monospace;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+h1 {
+    font-size: clamp(2rem, 6vw, 4rem);
+    letter-spacing: 0.2em;
+    margin-top: 2rem;
+    position: relative;
+    text-align: center;
+}
+h1 span {
+    position: absolute;
+    inset: 0;
+    color: red;
+    opacity: 0.4;
+    transform: translate(3px, 0);
+}
+
+.inventory-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 2rem;
+    justify-content: center;
+}
+
+.inventory-buttons button {
+    background: none;
+    color: #dcdcdc;
+    border: 2px solid #dcdcdc;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+.inventory-buttons button:hover {
+    color: #ff004c;
+    border-color: #ff004c;
+}
+
+.glitch {
+    animation: glitch 0.1s infinite;
+}
+
+@keyframes glitch {
+    from { transform: translate(0,0); }
+    to { transform: translate(2px,-2px); }
+}
+
+.slice {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: inherit;
+    pointer-events: none;
+    animation: tear 0.15s infinite;
+}
+
+@keyframes tear {
+    0% { clip-path: inset(0 0 90% 0); }
+    50% { clip-path: inset(10% 0 50% 0); }
+    100% { clip-path: inset(70% 0 10% 0); }
+}
+
+.fragment {
+    position: absolute;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    animation: fall 2s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(120vh) rotate(30deg);
+        opacity: 0;
+    }
+}
+</style>
+<link rel="stylesheet" href="styles/counter.css">
+</head>
+<body>
+
+<h1>
+    INVENTORY
+    <span>INVENTORY</span>
+</h1>
+
+<div class="inventory-buttons">
+  <button onclick="goTo('creations/0001.html')">01</button>
+  <button onclick="goTo('creations/0002.html')">02</button>
+  <button onclick="goTo('creations/0003.html')">03</button>
+  <button onclick="goTo('creations/0004.html')">04</button>
+  <button onclick="goTo('creations/0005.html')">05</button>
+  <button onclick="goTo('creations/0006.html')">06</button>
+  <button onclick="goTo('creations/0007.html')">07</button>
+  <button onclick="goTo('creations/0008.html')">08</button>
+  <button onclick="goTo('creations/0009.html')">09</button>
+  <button onclick="goTo('creations/0010.html')">10</button>
+  <button onclick="goTo('creations/0011.html')">11</button>
+  <button onclick="goTo('creations/0012.html')">12</button>
+  <button onclick="goTo('creations/0013.html')">13</button>
+  <button onclick="goTo('creations/0014.html')">14</button>
+  <button onclick="goTo('creations/0015.html')">15</button>
+  <button onclick="goTo('creations/0016.html')">16</button>
+  <button onclick="goTo('creations/0017.html')">17</button>
+  <button onclick="goTo('creations/0018.html')">18</button>
+  <button onclick="goTo('creations/0019.html')">19</button>
+  <button onclick="goTo('creations/0020.html')">20</button>
+  <button onclick="goTo('creations/0021.html')">21</button>
+  <button onclick="goTo('creations/0022.html')">22</button>
+  <button onclick="goTo('creations/0023.html')">23</button>
+  <button onclick="goTo('creations/0024.html')">24</button>
+  <button onclick="goTo('creations/0025.html')">25</button>
+  <button onclick="goTo('creations/0026.html')">26</button>
+  <button onclick="goTo('creations/0027.html')">27</button>
+  <button onclick="goTo('creations/0028.html')">28</button>
+  <button onclick="goTo('creations/0029.html')">29</button>
+  <button onclick="goTo('creations/0030.html')">30</button>
+  <button onclick="goTo('creations/0031.html')">31</button>
+  <button onclick="goTo('creations/0032.html')">32</button>
+  <button onclick="goTo('creations/0033.html')">33</button>
+  <button onclick="goTo('creations/0034.html')">34</button>
+  <button onclick="goTo('creations/0035.html')">35</button>
+  <button onclick="goTo('creations/0036.html')">36</button>
+</div>
+
+<script>
+function goTo(url) {
+    document.body.classList.add("glitch");
+
+    for (let i = 0; i < 3; i++) {
+        const s = document.createElement("div");
+        s.className = "slice";
+        s.style.top = Math.random() * 100 + "%";
+        document.body.appendChild(s);
+    }
+
+    document.querySelectorAll("*").forEach(el => {
+        if (el.innerText && el.innerText.length < 40) {
+            const frag = document.createElement("div");
+            frag.className = "fragment";
+            frag.textContent = el.innerText;
+            frag.style.left = Math.random() * 100 + "vw";
+            frag.style.top = Math.random() * 50 + "vh";
+            document.body.appendChild(frag);
+        }
+    });
+
+    const ctx = new AudioContext();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type = "square";
+    o.frequency.value = 90;
+    o.connect(g);
+    g.connect(ctx.destination);
+    g.gain.value = 0.2;
+    o.start();
+    setTimeout(() => o.stop(), 300);
+
+    setTimeout(() => {
+        document.body.style.transform = "scale(0.3) rotate(-10deg)";
+        document.body.style.opacity = 0;
+    }, 900);
+
+    setTimeout(() => location.href = url, 1600);
+}
+</script>
+<div class="page-buttons">
+<button onclick="location.href='https://chris-sta.github.io/my_failed_life/index.html'">Home</button>
+</div>
+
+<script>
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+        location.reload();
+    }
+});
+</script>
+</body>
+</html>

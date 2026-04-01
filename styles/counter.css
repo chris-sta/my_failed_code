@@ -1,0 +1,45 @@
+.page-counter {
+  position: fixed;
+  top: 8px;
+  right: 10px;
+  font-size: 11px;
+  color: #000;
+  background-color: rgba(82, 82, 82, 0.692);
+  padding: 2px 6px;
+  border-radius: 4px;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.page-buttons {
+  position: fixed;
+  top: 28px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+  z-index: 9999;
+}
+
+
+.page-buttons button {
+  font-size: 11px;
+  color: #000;
+  background-color: rgba(82, 82, 82, 0.692);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: none;
+  opacity: 0.8;
+  cursor: pointer;
+  text-align: center;
+}
+
+.page-buttons button:hover {
+  opacity: 1;
+}
+
+.page-buttons button:active {
+  transform: translateY(1px);
+}
