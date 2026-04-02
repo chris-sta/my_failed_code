@@ -34,7 +34,7 @@ def generate_sitemap():
 
     xml_content.append('</urlset>')
 
-    with open("sitemap.xml", "w", encoding="utf-8") as f:
+    with open("sitemap_index.xml", "w", encoding="utf-8") as f:
         f.write("\n".join(xml_content))
     
     print(f"Done! Successfully mapped {len(pages)} pages to sitemap.xml")
